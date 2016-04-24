@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Исполнители</string>
+
+    <string name="action_settings">Настройки</string>
+
+    <string name="action_refresh">Обновить</string>
+    <string name="title_activity_detail">Исполнитель</string>
+    <string name="title_activity_settings">Настройки</string>
+
+
+    <string name="pref_location_label">Адрес</string>
+
+    <string name="pref_location_key" translatable="false">jsonURL</string>
+
+    <string name="pref_location_default" translatable="false">http://cache-default05e.cdn.yandex.net/download.cdn.yandex.net/mobilization-2016/artists.json</string>
+
+    <string name="tracks1">песня</string>
+    <string name="tracks2">песни</string>
+    <string name="tracks">песен</string>
+    <string name="albums1">альбом</string>
+    <string name="albums2">альбома</string>
+    <string name="albums">альбомов</string>
+    <string name="genres">жанры</string>
+    <string name="name">Название</string>
+    <string name="biographi">Биография</string>
+    <string name="description">Описание</string>
+    <string name="comma">,\u00A0</string>
+
+</resources>
