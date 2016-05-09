@@ -1,5 +1,9 @@
 package com.netjorika.android.artistlist.app;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -18,6 +22,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.netjorika.android.artistlist.app.data.ArtistContract;
+import com.netjorika.android.artistlist.app.service.ArtistService;
 
 
 public class ArtistFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
@@ -130,9 +135,20 @@ public class ArtistFragment extends Fragment implements LoaderManager.LoaderCall
     }
 
     private void updateArtists()  {
+        /*
         FetchArtistListTask artistListTask = new FetchArtistListTask(getActivity());
         String jSON = Utility.getPreferredJSONURL(getActivity());
-        artistListTask.execute(jSON);
+        artistListTask.execute(jSON);*/
+                Intent alarmIntent = new Intent(getActivity(), ArtistService.AlarmReceiver.class);
+                alarmIntent.putExtra(ArtistService.YANDEX_BASE_URL, Utility.getPreferredJSONURL(getActivity()));
+
+                         //Wrap in a pending intent which only fires once.
+                               PendingIntent pi = PendingIntent.getBroadcast(getActivity(), 0,alarmIntent, PendingIntent.FLAG_ONE_SHOT);//getBroadcast(context, 0, i, 0);
+
+                        AlarmManager am=(AlarmManager)getActivity().getSystemService(Context.ALARM_SERVICE);
+
+                        //Set the AlarmManager to wake up the system.
+                                am.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 5000, pi);
     }
 
     // reload data if json updated

@@ -33,4 +33,7 @@
     <string name="description">Description</string>
     <string name="comma">,\u00A0</string>
 
+    <!-- SyncAdapter related -->
+    <string name="sync_account_type">netjorika.com</string>
+    <string name="content_authority">com.netjorika.android.artistlist.app</string>
 </resources>
