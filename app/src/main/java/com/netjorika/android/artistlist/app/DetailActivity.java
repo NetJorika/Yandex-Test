@@ -6,7 +6,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
-
+/*
 public class DetailActivity extends ActionBarActivity {
 
     @Override
@@ -51,3 +51,4 @@ public class DetailActivity extends ActionBarActivity {
 
 
 }
+*/

@@ -1,4 +1,4 @@
-package com.netjorika.android.artistlist.app;
+/*package com.netjorika.android.artistlist.app;
 
 import android.os.Bundle;
 import android.preference.ListPreference;
@@ -18,10 +18,8 @@ public class SettingsActivity extends PreferenceActivity
         bindPreferenceSummaryToValue(findPreference(getString(R.string.pref_location_key)));
     }
 
-    /**
-     * always update Preference if i need more preference
-     * @param preference
-     */
+
+
     private void bindPreferenceSummaryToValue(Preference preference) {
         preference.setOnPreferenceChangeListener(this);
 
@@ -49,4 +47,4 @@ public class SettingsActivity extends PreferenceActivity
         return true;
     }
 
-}
+}*/
