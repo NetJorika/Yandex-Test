@@ -27,5 +27,12 @@
     <string name="biographi">Биография</string>
     <string name="description">Описание</string>
     <string name="comma">,\u00A0</string>
+    <string name="me">me</string>
+    <string name="about">About</string>
+    <string name="bla_bla_bla">bla bla bla</string>
+    <string name="send_email">Send email</string>
+    <string name="email_text">You are cool!</string>
+    <string name="Ebail_subject">To Developer</string>
+    <string name="email_subject">To developer</string>
 
 </resources>

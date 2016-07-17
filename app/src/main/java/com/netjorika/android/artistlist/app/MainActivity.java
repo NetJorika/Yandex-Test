@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -47,6 +48,18 @@ public class MainActivity extends ActionBarActivity
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
+        if (id == R.id.about) {
+            Bundle arguments = new Bundle();
+
+
+            DetailFragment fragment = new DetailFragment();
+            fragment.setArguments(arguments);
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.container, new AboutFragment(), ARTISTFRAGMENT_TAG)
+                    .addToBackStack(null)
+                    .commit();
+            return true;
+        }
        /* if (id == R.id.action_settings) {
             //startActivity(new Intent(this, SettingsActivity.class));
             Bundle arguments = new Bundle();
@@ -114,6 +127,14 @@ public class MainActivity extends ActionBarActivity
                 .setData(contentUri);
         startActivity(intent);
         */
+    }
+
+    public void buttonSendEmail(View view) {
+        Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:" + getString(R.string.my_email)));
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.email_subject));
+        emailIntent.putExtra(Intent.EXTRA_TEXT, getString(R.string.email_text));
+
+        startActivity(Intent.createChooser(emailIntent, "Send email"));
     }
 }
 
