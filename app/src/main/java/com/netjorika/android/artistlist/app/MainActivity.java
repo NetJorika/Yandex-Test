@@ -21,6 +21,7 @@ public class MainActivity extends ActionBarActivity
 
     private final String LOG_TAG = MainActivity.class.getSimpleName();
     private final String ARTISTFRAGMENT_TAG = "AFTAG";
+    private final String DETAILFRAGMENT_TAG = "DFTAG";
 
     private String mJSONURL;
 
@@ -49,13 +50,8 @@ public class MainActivity extends ActionBarActivity
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.about) {
-            Bundle arguments = new Bundle();
-
-
-            DetailFragment fragment = new DetailFragment();
-            fragment.setArguments(arguments);
             getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.container, new AboutFragment(), ARTISTFRAGMENT_TAG)
+                    .replace(R.id.container, new AboutFragment())
                     .addToBackStack(null)
                     .commit();
             return true;
@@ -119,7 +115,7 @@ public class MainActivity extends ActionBarActivity
         fragment.setArguments(args);
 
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.container, fragment, ARTISTFRAGMENT_TAG)
+                .replace(R.id.container, fragment, DETAILFRAGMENT_TAG)
                 .addToBackStack(null)
                 .commit();
         /*
@@ -133,7 +129,6 @@ public class MainActivity extends ActionBarActivity
         Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:" + getString(R.string.my_email)));
         emailIntent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.email_subject));
         emailIntent.putExtra(Intent.EXTRA_TEXT, getString(R.string.email_text));
-
         startActivity(Intent.createChooser(emailIntent, "Send email"));
     }
 }
