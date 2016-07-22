@@ -1,15 +1,19 @@
 package com.netjorika.android.artistlist.app;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.LinearLayout;
 
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -22,13 +26,37 @@ public class MainActivity extends ActionBarActivity
     private final String LOG_TAG = MainActivity.class.getSimpleName();
     private final String ARTISTFRAGMENT_TAG = "AFTAG";
     private final String DETAILFRAGMENT_TAG = "DFTAG";
+    private final String TAG = "Main";
 
+    private HeadSetReceiver myReceiver;
     private String mJSONURL;
+
+    private class HeadSetReceiver extends BroadcastReceiver {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (findViewById(R.id.listview_headset) != null) {
+                if (intent.getAction().equals(Intent.ACTION_HEADSET_PLUG)) {
+                    int state = intent.getIntExtra("state", -1);
+                    switch (state) {
+                        case 0:
+                            //Headset unplugged
+                            (findViewById(R.id.listview_headset)).setVisibility(View.GONE);
+                            break;
+                        case 1:
+                            //Headset plugged
+                            (findViewById(R.id.listview_headset)).setVisibility(View.VISIBLE);
+                            break;
+                    }
+                }
+            }
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        myReceiver = new HeadSetReceiver();
         //mJSONURL =  Utility.getPreferredJSONURL(this);
         setContentView(R.layout.activity_main);
         if (savedInstanceState == null) {
@@ -51,7 +79,7 @@ public class MainActivity extends ActionBarActivity
         int id = item.getItemId();
         if (id == R.id.about) {
             getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.container, new AboutFragment())
+                    .replace(R.id.container, new AboutFragment(),DETAILFRAGMENT_TAG)
                     .addToBackStack(null)
                     .commit();
             return true;
@@ -77,6 +105,8 @@ public class MainActivity extends ActionBarActivity
     @Override
     protected void onResume() {
         super.onResume();
+        IntentFilter filter = new IntentFilter(Intent.ACTION_HEADSET_PLUG);
+        registerReceiver(myReceiver, filter);
         String JSONURL = Utility.getPreferredJSONURL(this);
 
         if (JSONURL != null && !JSONURL.equals(mJSONURL)) {

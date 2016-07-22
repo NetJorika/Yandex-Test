@@ -5,9 +5,23 @@
 
     tools:context=".MainActivity$ArtistFragment">
 
-    <ListView
-        android:id="@+id/listview_artist"
+    <LinearLayout
+        android:id="@+id/list_artist"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/listview_headset"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/Panel_Text"/>
+
+        <ListView
+            android:id="@+id/listview_artist"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
 
 </FrameLayout>
