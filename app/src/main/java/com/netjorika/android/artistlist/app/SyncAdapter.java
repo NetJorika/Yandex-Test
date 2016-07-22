@@ -12,7 +12,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.netjorika.android.artistlist.app.R;
-
+/*
 public class SyncAdapter extends AbstractThreadedSyncAdapter {
     public final String LOG_TAG = SyncAdapter.class.getSimpleName();
 
@@ -30,7 +30,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
      * Helper method to have the sync adapter sync immediately
      *
      * @param context The context used to access the account service
-     */
+
     public static void syncImmediately(Context context) {
         Bundle bundle = new Bundle();
         bundle.putBoolean(ContentResolver.SYNC_EXTRAS_EXPEDITED, true);
@@ -46,7 +46,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
      *
      * @param context The context used to access the account service
      * @return a fake account.
-     */
+
     public static Account getSyncAccount(Context context) {
         // Get an instance of the Android account manager
         AccountManager accountManager =
@@ -62,7 +62,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
         /*
          * Add the account and account type, no password or user data
          * If successful, return the Account object, otherwise report an error.
-         */
+
             if (!accountManager.addAccountExplicitly(newAccount, "", null)) {
                 return null;
             }
@@ -71,9 +71,10 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
              * in your <provider> element in the manifest,
              * then call ContentResolver.setIsSyncable(account, AUTHORITY, 1)
              * here.
-             */
+
 
         }
         return newAccount;
     }
 }
+*/

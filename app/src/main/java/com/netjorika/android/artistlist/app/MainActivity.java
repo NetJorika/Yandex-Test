@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.media.AudioManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -64,7 +65,6 @@ public class MainActivity extends ActionBarActivity
                     .add(R.id.container, new ArtistFragment(), ARTISTFRAGMENT_TAG)
                     .commit();
         }
-
         initImageLoader(getApplicationContext());
     }
 
@@ -116,6 +116,16 @@ public class MainActivity extends ActionBarActivity
             }
             mJSONURL = JSONURL;
         }
+    }
+
+    @Override
+    protected void onPause() {
+        try {
+            if (myReceiver != null)
+                unregisterReceiver(myReceiver);
+        } catch (Exception e) {
+        }
+        super.onPause();
     }
 
     /**

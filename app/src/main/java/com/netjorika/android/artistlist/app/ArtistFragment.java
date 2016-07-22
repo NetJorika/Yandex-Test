@@ -5,6 +5,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.media.AudioManager;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -193,5 +194,16 @@ public class ArtistFragment extends Fragment implements LoaderManager.LoaderCall
     @Override
     public void onLoaderReset(Loader<Cursor> cursorLoader) {
         mArtistListAdapter.swapCursor(null);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        getActivity().setTitle(R.string.app_name);
+
+        AudioManager am1 = (AudioManager)getActivity().getSystemService(Context.AUDIO_SERVICE);
+        if (!am1.isWiredHeadsetOn()){
+            (getActivity().findViewById(R.id.listview_headset)).setVisibility(View.GONE);
+        }
     }
 }
