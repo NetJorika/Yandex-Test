@@ -16,6 +16,14 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    signingConfigs {
+        yamblz {
+            storeFile file("C:\\Users\\GEORGY\\KEYSTORE.jks")
+            storePassword "qwerty"
+            keyAlias "Yandex-Test"
+            keyPassword "qwerty"
+        }
+    }
     buildTypes.each {
         //      it.buildConfigField 'String', 'OPEN_WEATHER_MAP_API_KEY', MyOpenWeatherMapApiKey
     }

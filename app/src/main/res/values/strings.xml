@@ -3,13 +3,9 @@
 
     <string name="app_name">Artists</string>
 
-    <string name="action_settings">Settings</string>
-    <string name="action_map">Map Location</string>
-    <string name="action_share">Share</string>
 
     <string name="action_refresh">Refresh</string>
     <string name="title_activity_detail">Details</string>
-    <string name="title_activity_settings">Settings</string>
 
 
     <string name="pref_location_label">Location</string>
@@ -34,13 +30,13 @@
     <string name="comma">,\u00A0</string>
 
     <!-- SyncAdapter related -->
-    <string name="sync_account_type">netjorika.com</string>
-    <string name="content_authority">com.netjorika.android.artistlist.app</string>
+    <string name="sync_account_type" translatable="false">netjorika.com</string>
+    <string name="content_authority" translatable="false">com.netjorika.android.artistlist.app</string>
     <string name="me">me</string>
     <string name="about">About</string>
     <string name="bla_bla_bla">bla bla bla</string>
     <string name="send_email">Send email</string>
-    <string name="my_email">georg2510@gmail.com</string>
+    <string name="my_email" translatable="false">georg2510@gmail.com</string>
     <string name="email_text">You are cool!</string>
     <string name="Ebail_subject">To Developer</string>
     <string name="email_subject">To developer</string>
